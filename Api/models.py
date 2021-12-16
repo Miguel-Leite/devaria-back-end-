@@ -38,10 +38,10 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser):
+class CustomUser(AbstractBaseUser):
     username = None
+    name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 

@@ -4,9 +4,13 @@ from Api.App.Views import WelcomeView
 
 from Api.App.Views import ModuleView
 from Api.App.Views import CourseView
+from Api.App.Views import UserView
 
 
-# from Api import views
+from Api import views
+
+from django.views.decorators.csrf import csrf_exempt
+
 
 """ DEFINIDO AS ROTAS DA APLICAÇÃO """
 
@@ -27,5 +31,7 @@ urlpatterns = [
 	path('course_update/<str:pk>/', CourseView.CourseUpdate, name="course_update"),
 	path('course_delete/<str:pk>/', CourseView.CourseDelete, name="course_delete"),
 
-	# path('register-user/', views.register_view, name="register-user"),
+	path('auth/users/', UserView.UserList, name="user"),
+
+	path('teste/', csrf_exempt(views.register_view), name="teste"),
 ]
