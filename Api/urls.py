@@ -12,6 +12,9 @@ from Api import views
 from django.views.decorators.csrf import csrf_exempt
 
 
+from Api.App.Views.UserView import RegisterAPI, LoginAPI
+from knox import views as knox_views
+
 """ DEFINIDO AS ROTAS DA APLICAÇÃO """
 
 urlpatterns = [
@@ -31,7 +34,14 @@ urlpatterns = [
 	path('course_update/<str:pk>/', CourseView.CourseUpdate, name="course_update"),
 	path('course_delete/<str:pk>/', CourseView.CourseDelete, name="course_delete"),
 
-	path('auth/users/', UserView.UserList, name="user"),
+	# path('auth/users/', UserView.UserList, name="user"),
+	# path('auth/user/create/', UserView.RegisterAPI, name="create"),
 
-	path('teste/', csrf_exempt(views.register_view), name="teste"),
+	# path('teste/', views.HelloWorld.as_view()),
+
+	path('auth/user/create/', RegisterAPI.as_view(), name='register'),
+	path('auth/user/login/', LoginAPI.as_view(), name='login'),
+	path('auth/user/logout/', knox_views.LogoutView.as_view(), name='logout'),
+    path('auth/user/logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
 ]
+
