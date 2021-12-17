@@ -1,12 +1,17 @@
 from uuid import uuid4
-
-
 from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
-from Api.App.Helpers.password_hash import SecretPassword
+class User(AbstractUser):
+    username = models.CharField(max_length=100, blank=True,null=True, unique=True)
+    email = models.EmailField(unique = True)
+    name = models.CharField(max_length=100)
+    phone_no = models.CharField(max_length=20)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+    def __str__(self):
+        return "{}".format(self.email)
 
 class Module(models.Model):
     id = models.CharField(max_length=150, primary_key=True, default=uuid4, editable=False)
