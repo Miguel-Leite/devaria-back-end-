@@ -4,16 +4,6 @@ from Api.App.Views import WelcomeView
 
 from Api.App.Views import ModuleView
 from Api.App.Views import CourseView
-from Api.App.Views import UserView
-
-
-from Api import views
-
-from django.views.decorators.csrf import csrf_exempt
-
-
-from Api.App.Views.UserView import RegisterAPI, LoginAPI
-from knox import views as knox_views
 
 """ DEFINIDO AS ROTAS DA APLICAÇÃO """
 
@@ -39,9 +29,9 @@ urlpatterns = [
 
 	# path('teste/', views.HelloWorld.as_view()),
 
-	path('auth/user/create/', RegisterAPI.as_view(), name='register'),
-	path('auth/user/login/', LoginAPI.as_view(), name='login'),
-	path('auth/user/logout/', knox_views.LogoutView.as_view(), name='logout'),
-    path('auth/user/logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
+	# path('auth/user/create/', RegisterAPI.as_view(), name='register'),
+	# path('auth/user/login/', LoginAPI.as_view(), name='login'),
+	# path('auth/user/logout/', knox_views.LogoutView.as_view(), name='logout'),
+    # path('auth/user/logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
 ]
 
