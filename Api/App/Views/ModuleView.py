@@ -9,6 +9,10 @@ from Api.models import Module
 from Api.App.Serializer.ModuleSerializer import ModuleSerializer
 
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
+
 @api_view(['GET'])
 def ModuleList(request):
 	module = Module.objects.all()
@@ -24,6 +28,7 @@ def ModuleDetail(request, pk):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def ModuleCreate(request):
 	try:
 		serializer = ModuleSerializer(data=request.data)
@@ -52,6 +57,7 @@ def ModuleUpdate(request, pk):
 		return "Falha ao actualizar o modulo!"
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def ModuleDelete(request, pk):
 	try:
 		module = Module.objects.get(id=pk)

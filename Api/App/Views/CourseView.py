@@ -1,10 +1,10 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from rest_framework import permissions
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from Api.models import Courses
@@ -27,6 +27,7 @@ def CourseDetail(request, pk):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def CourseCreate(request):
 	try:
 		serializer = CoursesSerializer(data=request.data)
@@ -40,6 +41,7 @@ def CourseCreate(request):
 		return None
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def CourseUpdate(request, pk):
 	try:
 		course = Courses.objects.get(id=pk)
@@ -54,6 +56,7 @@ def CourseUpdate(request, pk):
 		return None
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def CourseDelete(request, pk):
 	try:
 		course = Courses.objects.get(id=pk)
