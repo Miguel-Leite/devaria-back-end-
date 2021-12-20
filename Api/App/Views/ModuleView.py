@@ -28,7 +28,7 @@ def ModuleDetail(request, pk):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def ModuleCreate(request):
 	try:
 		serializer = ModuleSerializer(data=request.data)
