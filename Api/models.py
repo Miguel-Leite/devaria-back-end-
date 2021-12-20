@@ -6,8 +6,6 @@ from django.conf import settings
 class User(AbstractUser):
     username = models.CharField(max_length=100, blank=True,null=True, unique=True)
     email = models.EmailField(unique = True)
-    name = models.CharField(max_length=100)
-    phone_no = models.CharField(max_length=20)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     def __str__(self):
