@@ -5,6 +5,8 @@ from Api.App.Views import WelcomeView
 from Api.App.Views import ModuleView
 from Api.App.Views import CourseView
 
+from Api import views
+
 """ DEFINIDO AS ROTAS DA APLICAÇÃO """
 
 urlpatterns = [
@@ -25,7 +27,7 @@ urlpatterns = [
 	path('course_delete/<str:pk>/', CourseView.CourseDelete, name="course_delete"),
 
 	# path('auth/users/', UserView.UserList, name="user"),
-	# path('auth/user/create/', UserView.RegisterAPI, name="create"),
+	path('auth/user/create/', views.registration_view, name="create"),
 
 	# path('teste/', views.HelloWorld.as_view()),
 
