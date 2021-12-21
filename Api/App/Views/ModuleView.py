@@ -68,3 +68,14 @@ def ModuleDelete(request, pk):
 
 	except Exception as e:
 		return "Falha ao actualizar os dados!"
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def deleteAll_view(request,yes):
+    try:
+        if yes == 'yes':
+            module = Module.objects.all()
+            module.delete()
+        return Response({'response': True})
+    except Module.DoesNotExist:
+        return Response({'response': None})
