@@ -1,3 +1,4 @@
+from django.db import connection
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -17,6 +18,19 @@ def CourseList(request):
 	course = Courses.objects.all()
 	serializer = CoursesSerializer(course,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def getCourseAndModule_view(request):
+    sql = "SELECT C.id, C.course, M.module FROM Api_courses AS C INNER JOIN Api_module AS M ON C.module_id = M.id "
+    cursor = connection.cursor()
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    data = [{
+        'id': result[0][0],
+        'course': result[0][1],
+        'module': result[0][2],
+    }]
+    return Response(data)
 
 
 @api_view(['GET'])
@@ -67,3 +81,14 @@ def CourseDelete(request, pk):
 
 	except Exception as e:
 		return None
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def deleteAll_view(request,yes):
+    try:
+        if yes == 'yes':
+            course = Courses.objects.all()
+            course.delete()
+        return Response({'response': True})
+    except Courses.DoesNotExist:
+        return Response({'response': None})

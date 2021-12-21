@@ -5,4 +5,4 @@ from Api.models import Courses
 class CoursesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Courses
-        fields = ['name','module']
+        fields = '__all__'
