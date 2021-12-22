@@ -28,7 +28,7 @@ def ModuleDetail(request, pk):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def ModuleCreate(request):
 	try:
 		serializer = ModuleSerializer(data=request.data)
@@ -56,8 +56,7 @@ def ModuleUpdate(request, pk):
 	except Exception as e:
 		return "Falha ao actualizar o modulo!"
 
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
+@api_view(['POST'])
 def ModuleDelete(request, pk):
 	try:
 		module = Module.objects.get(id=pk)
@@ -68,14 +67,3 @@ def ModuleDelete(request, pk):
 
 	except Exception as e:
 		return "Falha ao actualizar os dados!"
-
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
-def deleteAll_view(request,yes):
-    try:
-        if yes == 'yes':
-            module = Module.objects.all()
-            module.delete()
-        return Response({'response': True})
-    except Module.DoesNotExist:
-        return Response({'response': None})
