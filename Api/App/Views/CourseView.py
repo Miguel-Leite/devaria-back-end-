@@ -81,14 +81,3 @@ def CourseDelete(request, pk):
 
 	except Exception as e:
 		return None
-
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
-def deleteAll_view(request,yes):
-    try:
-        if yes == 'yes':
-            course = Courses.objects.all()
-            course.delete()
-        return Response({'response': True})
-    except Courses.DoesNotExist:
-        return Response({'response': None})
