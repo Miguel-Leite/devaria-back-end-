@@ -108,7 +108,10 @@ DATABASES  = {
 
 
 ### MÉTODOS
+
 <hr />
+
+
 Requisito da API:
 
 <table>
