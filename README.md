@@ -107,6 +107,25 @@ DATABASES  = {
 ```
 
 
+### ENDPOINT PARA ACESSAR A DOCUMENTAÇÃO SWAGGER DA API
+<hr />
+
+```py
+    /api/docs
+```
+
+### FUNCIONALIDADES DA APLICAÇÃO
+<hr />
+Os recursos necessários da aplicação são:
+
+- [x] Criação, remoção e atualização de usuário
+- [x] Criação, remoção, atualização e deleção de módulo
+- [x] Criação, remoção, atualização e deleção de aula
+- [x] Authenticação de usuário
+- [x] Validação dos campos antes da inserção
+- [ ] Listagem das aulas em ordem alfabética
+
+
 ### MÉTODOS
 
 <hr />
@@ -135,21 +154,3 @@ Requisito da API:
 </tr
 
 </table>
-
-### ENDPOINT PARA ACESSAR A DOCUMENTAÇÃO SWAGGER DA API
-<hr />
-
-```py
-    /api/docs
-```
-
-### FUNCIONALIDADES DA APLICAÇÃO
-<hr />
-Os recursos necessários da aplicação são:
-
-- [x] Criação, remoção e atualização de usuário
-- [x] Criação, remoção, atualização e deleção de módulo
-- [x] Criação, remoção, atualização e deleção de aula
-- [x] Authenticação de usuário
-- [x] Validação dos campos antes da inserção
-- [ ] Listagem das aulas em ordem alfabética
