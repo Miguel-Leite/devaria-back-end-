@@ -63,14 +63,3 @@ def delete_view(request,id):
     except User.DoesNotExist:
         return Response({'response': None})
     
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
-def deleteAll_view(request,yes):
-    try:
-        if yes == 'yes':
-            user = User.objects.all()
-            user.delete()
-        return Response({'response': True})
-    except User.DoesNotExist:
-        return Response({'response': None})
-    
