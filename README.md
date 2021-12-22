@@ -137,7 +137,7 @@ Requisito da API:
 <hr />
 
 ```py
-http://127.0.0.1:8000/api/docs
+    /api/docs
 ```
 
 ### FUNCIONALIDADES DA APLICAÇÃO
